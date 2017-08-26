@@ -13,7 +13,7 @@ import CoreData
 extension FriendsController {
     
     func clearData() {
-        let delegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let delegate = UIApplication.shared.delegate as? AppDelegate
         
         if let context = delegate?.managedObjectContext {
             
@@ -22,12 +22,12 @@ extension FriendsController {
                 let entityNames = ["Friend", "Message"]
                 
                 for entityName in entityNames {
-                    let fetchRequest = NSFetchRequest(entityName: entityName)
+                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
                     
-                    let objects = try(context.executeFetchRequest(fetchRequest)) as? [NSManagedObject]
+                    let objects = try(context.fetch(fetchRequest)) as? [NSManagedObject]
                     
                     for object in objects! {
-                        context.deleteObject(object)
+                        context.delete(object)
                     }
                 }
                 
@@ -45,34 +45,34 @@ extension FriendsController {
         
         clearData()
         
-        let delegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let delegate = UIApplication.shared.delegate as? AppDelegate
         
         if let context = delegate?.managedObjectContext {
             
-            let mark = NSEntityDescription.insertNewObjectForEntityForName("Friend", inManagedObjectContext: context) as! Friend
+            let mark = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
             mark.name = "Mark Zuckerberg"
             mark.profileImageName = "zuckprofile"
             
-            let message = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
+            let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
             message.friend = mark
             message.text = "Hello, my name is Mark. Nice to meet you..."
-            message.date = NSDate()
+            message.date = Date()
             
             createSteveMessagesWithContext(context)
             
-            let donald = NSEntityDescription.insertNewObjectForEntityForName("Friend", inManagedObjectContext: context) as! Friend
+            let donald = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
             donald.name = "Donald Trump"
             donald.profileImageName = "donald_trump_profile"
             
             FriendsController.createMessageWithText("You're fired", friend: donald, minutesAgo: 5, context: context)
             
-            let gandhi = NSEntityDescription.insertNewObjectForEntityForName("Friend", inManagedObjectContext: context) as! Friend
+            let gandhi = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
             gandhi.name = "Mahatma Gandhi"
             gandhi.profileImageName = "gandhi"
             
             FriendsController.createMessageWithText("Love, Peace, and Joy", friend: gandhi, minutesAgo: 60 * 24, context: context)
             
-            let hillary = NSEntityDescription.insertNewObjectForEntityForName("Friend", inManagedObjectContext: context) as! Friend
+            let hillary = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
             hillary.name = "Hillary Clinton"
             hillary.profileImageName = "hillary_profile"
             
@@ -90,8 +90,8 @@ extension FriendsController {
         
     }
     
-    private func createSteveMessagesWithContext(context: NSManagedObjectContext) {
-        let steve = NSEntityDescription.insertNewObjectForEntityForName("Friend", inManagedObjectContext: context) as! Friend
+    fileprivate func createSteveMessagesWithContext(_ context: NSManagedObjectContext) {
+        let steve = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
         steve.name = "Steve Jobs"
         steve.profileImageName = "steve_profile"
         
@@ -107,17 +107,18 @@ extension FriendsController {
         FriendsController.createMessageWithText("Absolutely, I'll just use my gigantic iPhone 6 Plus until then!!!", friend: steve, minutesAgo: 1, context: context, isSender: true)
     }
     
-    static func createMessageWithText(text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext, isSender: Bool = false) -> Message {
-        let message = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: context) as! Message
+    @discardableResult
+    static func createMessageWithText(_ text: String, friend: Friend, minutesAgo: Double, context: NSManagedObjectContext, isSender: Bool = false) -> Message {
+        let message = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
         message.friend = friend
         message.text = text
-        message.date = NSDate().dateByAddingTimeInterval(-minutesAgo * 60)
-        message.isSender = NSNumber(bool: isSender)
+        message.date = Date().addingTimeInterval(-minutesAgo * 60)
+        message.isSender = NSNumber(value: isSender as Bool)
         return message
     }
     
     func loadData() {
-        let delegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        let delegate = UIApplication.shared.delegate as? AppDelegate
         
         if let context = delegate?.managedObjectContext {
             
@@ -127,36 +128,36 @@ extension FriendsController {
                 
                 for friend in friends {
                     
-                    let fetchRequest = NSFetchRequest(entityName: "Message")
+                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Message")
                     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
                     fetchRequest.predicate = NSPredicate(format: "friend.name = %@", friend.name!)
                     fetchRequest.fetchLimit = 1
                     
                     do {
                         
-                        let fetchedMessages = try(context.executeFetchRequest(fetchRequest)) as? [Message]
-                        messages?.appendContentsOf(fetchedMessages!)
+                        let fetchedMessages = try(context.fetch(fetchRequest)) as? [Message]
+                        messages?.append(contentsOf: fetchedMessages!)
                         
                     } catch let err {
                         print(err)
                     }
                 }
                 
-                messages = messages?.sort({$0.date!.compare($1.date!) == .OrderedDescending})
+                messages = messages?.sorted(by: {$0.date!.compare($1.date! as Date) == .orderedDescending})
                 
             }
         }
     }
     
-    private func fetchFriends() -> [Friend]? {
-        let delegate = UIApplication.sharedApplication().delegate as? AppDelegate
+    fileprivate func fetchFriends() -> [Friend]? {
+        let delegate = UIApplication.shared.delegate as? AppDelegate
         if let context = delegate?.managedObjectContext {
             
-            let request = NSFetchRequest(entityName: "Friend")
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Friend")
             
             do {
                 
-                return try context.executeFetchRequest(request) as? [Friend]
+                return try context.fetch(request) as? [Friend]
                 
             } catch let err {
                 print(err)
