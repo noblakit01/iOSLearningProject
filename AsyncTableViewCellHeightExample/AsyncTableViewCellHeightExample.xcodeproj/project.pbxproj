@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		567A11237D19655061BA8F5B /* Pods_AsyncTableViewCellHeightExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D8ED26D6C8930203626E91 /* Pods_AsyncTableViewCellHeightExample.framework */; };
 		748B71431FCDBFF500FBF21F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B71421FCDBFF500FBF21F /* AppDelegate.swift */; };
 		748B71451FCDBFF500FBF21F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B71441FCDBFF500FBF21F /* ViewController.swift */; };
 		748B71481FCDBFF500FBF21F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 748B71461FCDBFF500FBF21F /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		66B0BC55276A1DE13FA9F7CE /* Pods-AsyncTableViewCellHeightExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AsyncTableViewCellHeightExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AsyncTableViewCellHeightExample/Pods-AsyncTableViewCellHeightExample.debug.xcconfig"; sourceTree = "<group>"; };
 		748B713F1FCDBFF500FBF21F /* AsyncTableViewCellHeightExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsyncTableViewCellHeightExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		748B71421FCDBFF500FBF21F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		748B71441FCDBFF500FBF21F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		748B714C1FCDBFF500FBF21F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		748B714E1FCDBFF500FBF21F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74DFA2751FCEFF3B00072AFF /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		A7D8ED26D6C8930203626E91 /* Pods_AsyncTableViewCellHeightExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AsyncTableViewCellHeightExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF50AD648B3A7756538F76D9 /* Pods-AsyncTableViewCellHeightExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AsyncTableViewCellHeightExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-AsyncTableViewCellHeightExample/Pods-AsyncTableViewCellHeightExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				567A11237D19655061BA8F5B /* Pods_AsyncTableViewCellHeightExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C535D6F056A7720C855414A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7D8ED26D6C8930203626E91 /* Pods_AsyncTableViewCellHeightExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		748B71361FCDBFF500FBF21F = {
 			isa = PBXGroup;
 			children = (
 				748B71411FCDBFF500FBF21F /* AsyncTableViewCellHeightExample */,
 				748B71401FCDBFF500FBF21F /* Products */,
+				80875B0A1CC6FEC3D86D9BD1 /* Pods */,
+				3C535D6F056A7720C855414A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +82,15 @@
 			path = AsyncTableViewCellHeightExample;
 			sourceTree = "<group>";
 		};
+		80875B0A1CC6FEC3D86D9BD1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				66B0BC55276A1DE13FA9F7CE /* Pods-AsyncTableViewCellHeightExample.debug.xcconfig */,
+				BF50AD648B3A7756538F76D9 /* Pods-AsyncTableViewCellHeightExample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 748B71511FCDBFF500FBF21F /* Build configuration list for PBXNativeTarget "AsyncTableViewCellHeightExample" */;
 			buildPhases = (
+				747E211A7B19B189BAFD5D2C /* [CP] Check Pods Manifest.lock */,
 				748B713B1FCDBFF500FBF21F /* Sources */,
 				748B713C1FCDBFF500FBF21F /* Frameworks */,
 				748B713D1FCDBFF500FBF21F /* Resources */,
+				E581D42E228AC0D0F95C7238 /* [CP] Embed Pods Frameworks */,
+				DE3257838011DEFB78B0E5CC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,6 +160,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		747E211A7B19B189BAFD5D2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AsyncTableViewCellHeightExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE3257838011DEFB78B0E5CC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AsyncTableViewCellHeightExample/Pods-AsyncTableViewCellHeightExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E581D42E228AC0D0F95C7238 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AsyncTableViewCellHeightExample/Pods-AsyncTableViewCellHeightExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftyImageCache/SwiftyImageCache.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyImageCache.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AsyncTableViewCellHeightExample/Pods-AsyncTableViewCellHeightExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		748B713B1FCDBFF500FBF21F /* Sources */ = {
@@ -276,6 +357,7 @@
 		};
 		748B71521FCDBFF500FBF21F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66B0BC55276A1DE13FA9F7CE /* Pods-AsyncTableViewCellHeightExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -291,6 +373,7 @@
 		};
 		748B71531FCDBFF500FBF21F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF50AD648B3A7756538F76D9 /* Pods-AsyncTableViewCellHeightExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
