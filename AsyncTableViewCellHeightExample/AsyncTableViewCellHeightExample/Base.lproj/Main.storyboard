@@ -43,6 +43,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="heightConstraint" destination="1W7-AG-mac" id="hFk-VO-wQ9"/>
                                             <outlet property="photoImageView" destination="23z-MV-zgs" id="mqC-BW-Yd8"/>
                                         </connections>
                                     </tableViewCell>
