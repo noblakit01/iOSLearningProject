@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         "http://www.readersdigest.ca/wp-content/uploads/2011/01/4-ways-cheer-up-depressed-cat.jpg",
         "https://ichef.bbci.co.uk/news/1024/cpsprodpb/693C/production/_95804962_p0517py6.jpg",
         "http://www.petmd.com/sites/default/files/cat-lady-blog.jpg",
-        "http://www.lanlinglaurel.com/data/out/109/4898297-cat-picture.jpg"
+        "https://wallpaper.wiki/wp-content/uploads/2017/05/Moon-in-cold-lakes-nexus-wallpaper.jpg"
     ]
     
     override func viewDidLoad() {
@@ -37,18 +37,19 @@ extension ViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         let index = indexPath.row
         if let url = URL(string: urls[index]) {
-            let key = url.absoluteString
+            let urlString = url.absoluteString
+            let key = urlString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? urlString
             if let image = ImageCache.default.image(of: key) {
                 let width = view.bounds.width
                 let height = width * image.size.height / image.size.width
                 cell.photoImageView.image = image
                 cell.heightConstraint.constant = height
             } else {
-                ImageCache.default.loadImage(atUrl: url, completion: { [weak self] (urlString, _) in
+                ImageCache.default.loadImage(atUrl: url, completion: { [weak self] (urlStr, _) in
                     guard let sSelf = self else {
                         return
                     }
-                    guard urlString == key else {
+                    guard urlString == urlStr else {
                         return
                     }
                     sSelf.tableView.reloadRows(at: [IndexPath(item: index, section: 0)], with: .automatic)
