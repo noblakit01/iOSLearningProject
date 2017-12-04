@@ -35,8 +35,25 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-        if let url = URL(string: urls[indexPath.row]) {
-            cell.photoImageView.setUrl(url)
+        let index = indexPath.row
+        if let url = URL(string: urls[index]) {
+            let key = url.absoluteString
+            if let image = ImageCache.default.image(of: key) {
+                let width = view.bounds.width
+                let height = width * image.size.height / image.size.width
+                cell.photoImageView.image = image
+                cell.heightConstraint.constant = height
+            } else {
+                ImageCache.default.loadImage(atUrl: url, completion: { [weak self] (urlString, _) in
+                    guard let sSelf = self else {
+                        return
+                    }
+                    guard urlString == key else {
+                        return
+                    }
+                    sSelf.tableView.reloadRows(at: [IndexPath(item: index, section: 0)], with: .automatic)
+                })
+            }
         }
         return cell
     }

@@ -73,11 +73,11 @@
 			children = (
 				748B71421FCDBFF500FBF21F /* AppDelegate.swift */,
 				748B71441FCDBFF500FBF21F /* ViewController.swift */,
+				74DFA2751FCEFF3B00072AFF /* TableViewCell.swift */,
 				748B71461FCDBFF500FBF21F /* Main.storyboard */,
 				748B71491FCDBFF500FBF21F /* Assets.xcassets */,
 				748B714B1FCDBFF500FBF21F /* LaunchScreen.storyboard */,
 				748B714E1FCDBFF500FBF21F /* Info.plist */,
-				74DFA2751FCEFF3B00072AFF /* TableViewCell.swift */,
 			);
 			path = AsyncTableViewCellHeightExample;
 			sourceTree = "<group>";
