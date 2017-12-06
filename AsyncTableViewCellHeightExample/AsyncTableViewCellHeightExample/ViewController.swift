@@ -51,14 +51,25 @@ extension ViewController: UITableViewDataSource {
                 cell.photoImageView.image = image
                 cell.heightConstraint.constant = height
             } else {
-                ImageCache.default.loadImage(atUrl: url, completion: { [weak self] (urlStr, _) in
+                ImageCache.default.loadImage(atUrl: url, completion: { [weak self] (urlStr, image) in
                     guard let sSelf = self else {
+                        return
+                    }
+                    guard let image = image else {
                         return
                     }
                     guard urlString == urlStr else {
                         return
                     }
-                    sSelf.tableView.reloadRows(at: [IndexPath(item: index, section: 0)], with: .automatic)
+                    let width = sSelf.view.bounds.width
+                    let height = width * image.size.height / image.size.width
+                    
+                    if let cell = sSelf.tableView.cellForRow(at: IndexPath(item: index, section: 0)) as? TableViewCell {
+                        cell.photoImageView.image = image
+                        cell.heightConstraint.constant = height
+                        sSelf.tableView.beginUpdates()
+                        sSelf.tableView.endUpdates()
+                    }
                 })
             }
         }
