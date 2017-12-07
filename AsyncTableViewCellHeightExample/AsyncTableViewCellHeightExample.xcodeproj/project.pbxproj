@@ -363,6 +363,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TMH6L6FX6W;
 				INFOPLIST_FILE = AsyncTableViewCellHeightExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.luantran.AsyncTableViewCellHeightExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -379,6 +380,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TMH6L6FX6W;
 				INFOPLIST_FILE = AsyncTableViewCellHeightExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.luantran.AsyncTableViewCellHeightExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
