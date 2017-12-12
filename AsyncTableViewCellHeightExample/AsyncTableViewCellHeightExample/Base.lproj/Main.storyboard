@@ -4,7 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,15 +35,22 @@
                                                         <constraint firstAttribute="height" priority="750" constant="43.5" id="1W7-AG-mac"/>
                                                     </constraints>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="19v-8G-CKe">
+                                                    <rect key="frame" x="177" y="11" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
+                                                <constraint firstItem="19v-8G-CKe" firstAttribute="centerY" secondItem="QbO-Iu-hvB" secondAttribute="centerY" id="2WI-Lz-QLc"/>
                                                 <constraint firstAttribute="trailing" secondItem="23z-MV-zgs" secondAttribute="trailing" id="PJJ-u5-NDF"/>
                                                 <constraint firstAttribute="bottom" secondItem="23z-MV-zgs" secondAttribute="bottom" id="cEA-0l-Jou"/>
+                                                <constraint firstItem="19v-8G-CKe" firstAttribute="centerX" secondItem="QbO-Iu-hvB" secondAttribute="centerX" id="e5O-NL-vh9"/>
                                                 <constraint firstItem="23z-MV-zgs" firstAttribute="top" secondItem="QbO-Iu-hvB" secondAttribute="top" id="ea5-Yl-KG2"/>
                                                 <constraint firstItem="23z-MV-zgs" firstAttribute="leading" secondItem="QbO-Iu-hvB" secondAttribute="leading" id="hRx-9W-a76"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="activityIndicatorView" destination="19v-8G-CKe" id="ZDW-1Q-ipl"/>
                                             <outlet property="heightConstraint" destination="1W7-AG-mac" id="hFk-VO-wQ9"/>
                                             <outlet property="photoImageView" destination="23z-MV-zgs" id="mqC-BW-Yd8"/>
                                         </connections>

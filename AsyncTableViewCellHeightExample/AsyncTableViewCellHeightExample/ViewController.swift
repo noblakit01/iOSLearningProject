@@ -50,7 +50,10 @@ extension ViewController: UITableViewDataSource {
                 let height = width * image.size.height / image.size.width
                 cell.photoImageView.image = image
                 cell.heightConstraint.constant = height
+                cell.activityIndicatorView.stopAnimating()
             } else {
+                cell.heightConstraint.constant = 200
+                cell.activityIndicatorView.startAnimating()
                 ImageCache.default.loadImage(atUrl: url, completion: { [weak self] (urlStr, image) in
                     guard let sSelf = self else {
                         return
@@ -67,6 +70,7 @@ extension ViewController: UITableViewDataSource {
                     if let cell = sSelf.tableView.cellForRow(at: IndexPath(item: index, section: 0)) as? TableViewCell {
                         cell.photoImageView.image = image
                         cell.heightConstraint.constant = height
+                        cell.activityIndicatorView.stopAnimating()
                         sSelf.tableView.beginUpdates()
                         sSelf.tableView.endUpdates()
                     }
