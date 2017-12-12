@@ -52,6 +52,7 @@ extension ViewController: UITableViewDataSource {
                 cell.heightConstraint.constant = height
                 cell.activityIndicatorView.stopAnimating()
             } else {
+                cell.heightConstraint.constant = 200
                 cell.activityIndicatorView.startAnimating()
                 ImageCache.default.loadImage(atUrl: url, completion: { [weak self] (urlStr, image) in
                     guard let sSelf = self else {
