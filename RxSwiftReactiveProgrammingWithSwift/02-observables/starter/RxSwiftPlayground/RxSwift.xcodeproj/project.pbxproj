@@ -13,7 +13,7 @@
 
 /* Begin PBXFileReference section */
 		2F7C5DA27F78FC5314BD0719 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		70B0ED396943F9F7F98C49B4 /* RxSwift.playground */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.playground; path = RxSwift.playground; sourceTree = "<group>"; };
+		70B0ED396943F9F7F98C49B4 /* RxSwift.playground */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.playground; path = RxSwift.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		CDF35AEC8AF4A599BAB0A949 /* Pods_RxSwiftPlayground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftPlayground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D0321F5AC0F673DC4B523B /* RxSwiftPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E06E8E6105E163FDEB755712 /* Pods-RxSwiftPlayground.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftPlayground.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftPlayground/Pods-RxSwiftPlayground.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,7 +88,6 @@
 				91B62414B627433AD6C135ED /* Sources */,
 				8BB21372B893E6706C9CE0C0 /* Frameworks */,
 				48F6823F2007100188967277 /* [CP] Embed Pods Frameworks */,
-				6D4E7ECC4D6D587F28994A4C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,13 +136,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RxSwiftPlayground-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		48F6823F2007100188967277 /* [CP] Embed Pods Frameworks */ = {
@@ -152,28 +154,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftPlayground/Pods-RxSwiftPlayground-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftPlayground/Pods-RxSwiftPlayground-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6D4E7ECC4D6D587F28994A4C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftPlayground/Pods-RxSwiftPlayground-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
