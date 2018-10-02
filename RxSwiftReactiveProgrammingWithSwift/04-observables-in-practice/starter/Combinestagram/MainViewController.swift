@@ -25,6 +25,10 @@ import RxSwift
 
 class MainViewController: UIViewController {
 
+  // MARK: Private variables
+  private let bag = DisposeBag()
+  private let images = Variable<[UIImage]>([])
+    
   @IBOutlet weak var imagePreview: UIImageView!
   @IBOutlet weak var buttonClear: UIButton!
   @IBOutlet weak var buttonSave: UIButton!
@@ -33,10 +37,16 @@ class MainViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    images.asObservable().subscribe(onNext: { [weak self] images in
+      guard let preview = self?.imagePreview else {
+        return
+      }
+      preview.image = UIImage.collage(images: images, size: preview.frame.size)
+    }).disposed(by: bag)
   }
   
   @IBAction func actionClear() {
-
+    images.value = []
   }
 
   @IBAction func actionSave() {
@@ -44,7 +54,11 @@ class MainViewController: UIViewController {
   }
 
   @IBAction func actionAdd() {
-
+    guard let image = UIImage(named: "IMG_1907") else {
+      print("No image named IMG_1907 in Assets")
+      return
+    }
+    images.value.append(image)
   }
 
   func showMessage(_ title: String, description: String? = nil) {
