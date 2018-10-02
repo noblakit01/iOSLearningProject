@@ -34,6 +34,7 @@ class MainViewController: UIViewController {
   @IBOutlet weak var buttonSave: UIButton!
   @IBOutlet weak var itemAdd: UIBarButtonItem!
 
+  // MARK: Method
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -43,6 +44,17 @@ class MainViewController: UIViewController {
       }
       preview.image = UIImage.collage(images: images, size: preview.frame.size)
     }).disposed(by: bag)
+    
+    images.asObservable().subscribe(onNext: { [weak self] images in
+      self?.updateUI(photos: images)
+    }).disposed(by: bag)
+  }
+  
+  private func updateUI(photos: [UIImage]) {
+    buttonSave.isEnabled = photos.count > 0 && photos.count % 2 == 0
+    buttonClear.isEnabled = photos.count > 0
+    itemAdd.isEnabled = photos.count < 6
+    title = photos.count > 0 ? "\(photos.count) Photos" : "Collage"
   }
   
   @IBAction func actionClear() {
