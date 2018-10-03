@@ -66,11 +66,17 @@ class MainViewController: UIViewController {
   }
 
   @IBAction func actionAdd() {
-    guard let image = UIImage(named: "IMG_1907") else {
-      print("No image named IMG_1907 in Assets")
+    guard let photosViewController = storyboard?.instantiateViewController(withIdentifier: "PhotosViewController") as? PhotosViewController else {
+      print("Can't instantiate \(PhotosViewController.self) from storyboard")
       return
     }
-    images.value.append(image)
+    photosViewController.selectedPhotos.subscribe(onNext: { [weak self] image in
+      self?.images.value.append(image)
+    }, onDisposed: {
+      print("on Disposed")
+    }).disposed(by: bag)
+    
+    navigationController?.pushViewController(photosViewController, animated: true)
   }
 
   func showMessage(_ title: String, description: String? = nil) {
