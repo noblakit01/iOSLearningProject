@@ -25,31 +25,85 @@ import RxSwift
 
 class MainViewController: UIViewController {
 
+  // MARK: Private variables
+  private let bag = DisposeBag()
+  private let images = Variable<[UIImage]>([])
+    
   @IBOutlet weak var imagePreview: UIImageView!
   @IBOutlet weak var buttonClear: UIButton!
   @IBOutlet weak var buttonSave: UIButton!
   @IBOutlet weak var itemAdd: UIBarButtonItem!
 
+  // MARK: Method
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    images.asObservable()
+      .subscribe(onNext: { [weak self] images in
+        guard let preview = self?.imagePreview else {
+          return
+        }
+        preview.image = UIImage.collage(images: images, size: preview.frame.size)
+      })
+      .disposed(by: bag)
+    
+    images.asObservable()
+      .subscribe(onNext: { [weak self] images in
+        self?.updateUI(photos: images)
+      })
+      .disposed(by: bag)
+  }
+  
+  private func updateUI(photos: [UIImage]) {
+    buttonSave.isEnabled = photos.count > 0 && photos.count % 2 == 0
+    buttonClear.isEnabled = photos.count > 0
+    itemAdd.isEnabled = photos.count < 6
+    title = photos.count > 0 ? "\(photos.count) Photos" : "Collage"
   }
   
   @IBAction func actionClear() {
-
+    images.value = []
   }
 
   @IBAction func actionSave() {
-
+    guard let image = imagePreview.image else {
+      return
+    }
+    PhotoWriter.save(image: image)
+      .subscribe(onSuccess: { [weak self] id in
+        guard let `self` = self else {
+          return
+        }
+        self.showMessage("Saved with id: \(id)")
+        self.actionClear()
+      }, onError: { [weak self] error in
+        guard let `self` = self else {
+          return
+        }
+        self.showMessage("Error", description: error.localizedDescription)
+      })
+      .disposed(by: bag)
   }
 
   @IBAction func actionAdd() {
-
+    guard let photosViewController = storyboard?.instantiateViewController(withIdentifier: "PhotosViewController") as? PhotosViewController else {
+      print("Can't instantiate \(PhotosViewController.self) from storyboard")
+      return
+    }
+    photosViewController.selectedPhotos
+      .subscribe(onNext: { [weak self] image in
+        self?.images.value.append(image)
+      }, onDisposed: {
+        print("on Disposed")
+      })
+      .disposed(by: bag)
+    
+    navigationController?.pushViewController(photosViewController, animated: true)
   }
 
   func showMessage(_ title: String, description: String? = nil) {
-    let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { [weak self] _ in self?.dismiss(animated: true, completion: nil)}))
-    present(alert, animated: true, completion: nil)
+    alert(title, description: description)
+      .subscribe()
+      .disposed(by: bag)
   }
 }
