@@ -70,7 +70,6 @@ class MainViewController: UIViewController {
       return
     }
     PhotoWriter.save(image: image)
-      .asSingle()
       .subscribe(onSuccess: { [weak self] id in
         guard let `self` = self else {
           return
