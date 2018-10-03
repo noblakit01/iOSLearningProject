@@ -38,16 +38,20 @@ class MainViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    images.asObservable().subscribe(onNext: { [weak self] images in
-      guard let preview = self?.imagePreview else {
-        return
-      }
-      preview.image = UIImage.collage(images: images, size: preview.frame.size)
-    }).disposed(by: bag)
+    images.asObservable()
+      .subscribe(onNext: { [weak self] images in
+        guard let preview = self?.imagePreview else {
+          return
+        }
+        preview.image = UIImage.collage(images: images, size: preview.frame.size)
+      })
+      .disposed(by: bag)
     
-    images.asObservable().subscribe(onNext: { [weak self] images in
-      self?.updateUI(photos: images)
-    }).disposed(by: bag)
+    images.asObservable()
+      .subscribe(onNext: { [weak self] images in
+        self?.updateUI(photos: images)
+      })
+      .disposed(by: bag)
   }
   
   private func updateUI(photos: [UIImage]) {
@@ -62,7 +66,24 @@ class MainViewController: UIViewController {
   }
 
   @IBAction func actionSave() {
-
+    guard let image = imagePreview.image else {
+      return
+    }
+    PhotoWriter.save(image: image)
+      .asSingle()
+      .subscribe(onSuccess: { [weak self] id in
+        guard let `self` = self else {
+          return
+        }
+        self.showMessage("Saved with id: \(id)")
+        self.actionClear()
+      }, onError: { [weak self] error in
+        guard let `self` = self else {
+          return
+        }
+        self.showMessage("Error", description: error.localizedDescription)
+      })
+      .disposed(by: bag)
   }
 
   @IBAction func actionAdd() {
@@ -70,11 +91,13 @@ class MainViewController: UIViewController {
       print("Can't instantiate \(PhotosViewController.self) from storyboard")
       return
     }
-    photosViewController.selectedPhotos.subscribe(onNext: { [weak self] image in
-      self?.images.value.append(image)
-    }, onDisposed: {
-      print("on Disposed")
-    }).disposed(by: bag)
+    photosViewController.selectedPhotos
+      .subscribe(onNext: { [weak self] image in
+        self?.images.value.append(image)
+      }, onDisposed: {
+        print("on Disposed")
+      })
+      .disposed(by: bag)
     
     navigationController?.pushViewController(photosViewController, animated: true)
   }
