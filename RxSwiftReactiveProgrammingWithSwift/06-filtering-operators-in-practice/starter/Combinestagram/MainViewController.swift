@@ -37,7 +37,9 @@ class MainViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    images.asObservable()
+    let imageObservable = images.asObservable().share()
+    imageObservable
+      .throttle(0.5, scheduler: MainScheduler.instance)
       .subscribe(onNext: { [weak self] photos in
         guard let preview = self?.imagePreview else { return }
         preview.image = UIImage.collage(images: photos,
@@ -45,7 +47,7 @@ class MainViewController: UIViewController {
       })
       .disposed(by: bag)
 
-    images.asObservable()
+    imageObservable
       .subscribe(onNext: { [weak self] photos in
         self?.updateUI(photos: photos)
       })
@@ -70,6 +72,7 @@ class MainViewController: UIViewController {
   @IBAction func actionClear() {
     images.value = []
     imageCache = []
+    updateNavigationIcon()
   }
 
   @IBAction func actionSave() {
@@ -95,6 +98,9 @@ class MainViewController: UIViewController {
       .share()
     
     newPhotos
+      .takeWhile { [weak self] _ in
+        return self?.images.value.count ?? 0 < 6
+      }
       .filter { image in
         return image.size.width > image.size.height
       }
@@ -108,9 +114,6 @@ class MainViewController: UIViewController {
         }
         self.imageCache.append(len)
         return true
-      }
-      .takeWhile { [weak self] _ in
-        return self?.images.value.count ?? 0 < 6
       }
       .subscribe(onNext: { [weak self] newImage in
         guard let images = self?.images else { return }
