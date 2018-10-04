@@ -27,6 +27,7 @@ class MainViewController: UIViewController {
 
   private let bag = DisposeBag()
   private let images = Variable<[UIImage]>([])
+  private var imageCache = [Int]()
 
   @IBOutlet weak var imagePreview: UIImageView!
   @IBOutlet weak var buttonClear: UIButton!
@@ -57,9 +58,18 @@ class MainViewController: UIViewController {
     itemAdd.isEnabled = photos.count < 6
     title = photos.count > 0 ? "\(photos.count) photos" : "Collage"
   }
+  
+  private func updateNavigationIcon() {
+    let icon = imagePreview.image?
+      .scaled(CGSize(width: 22, height: 22))
+      .withRenderingMode(.alwaysOriginal)
+    
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: icon, style: .done, target: nil, action: nil)
+  }
 
   @IBAction func actionClear() {
     images.value = []
+    imageCache = []
   }
 
   @IBAction func actionSave() {
@@ -81,12 +91,38 @@ class MainViewController: UIViewController {
     let photosViewController = storyboard!.instantiateViewController(
       withIdentifier: "PhotosViewController") as! PhotosViewController
 
-    photosViewController.selectedPhotos
+    let newPhotos = photosViewController.selectedPhotos
+      .share()
+    
+    newPhotos
+      .filter { image in
+        return image.size.width > image.size.height
+      }
+      .filter { [weak self] image in
+        guard let `self` = self else {
+          return false
+        }
+        let len = UIImagePNGRepresentation(image)?.count ?? 0
+        guard self.imageCache.contains(len) == false else {
+          return false
+        }
+        self.imageCache.append(len)
+        return true
+      }
+      .takeWhile { [weak self] _ in
+        return self?.images.value.count ?? 0 < 6
+      }
       .subscribe(onNext: { [weak self] newImage in
         guard let images = self?.images else { return }
         images.value.append(newImage)
       }, onDisposed: {
           print("completed photo selection")
+      })
+      .disposed(by: bag)
+    
+    newPhotos.ignoreElements()
+      .subscribe(onCompleted: { [weak self] in
+        self?.updateNavigationIcon()
       })
       .disposed(by: bag)
 
