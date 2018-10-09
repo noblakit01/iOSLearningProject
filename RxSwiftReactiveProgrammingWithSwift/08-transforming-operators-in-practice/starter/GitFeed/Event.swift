@@ -29,7 +29,8 @@ class Event {
   let name: String
   let imageUrl: URL
   let action: String
-
+  let createdDate: Date
+  
   // MARK: - JSON -> Event
   init?(dictionary: AnyDict) {
     guard let repoDict = dictionary["repo"] as? AnyDict,
@@ -38,15 +39,23 @@ class Event {
       let actorName = actor["display_login"] as? String,
       let actorUrlString = actor["avatar_url"] as? String,
       let actorUrl  = URL(string: actorUrlString),
-      let actionType = dictionary["type"] as? String
+      let actionType = dictionary["type"] as? String,
+      let createDateString = dictionary["created_at"] as? String
       else {
         return nil
+    }
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+    guard let createdDate = dateFormatter.date(from: createDateString) else {
+      return nil
     }
 
     repo = repoName
     name = actorName
     imageUrl = actorUrl
     action = actionType
+    self.createdDate = createdDate
   }
 
   // MARK: - Event -> JSON

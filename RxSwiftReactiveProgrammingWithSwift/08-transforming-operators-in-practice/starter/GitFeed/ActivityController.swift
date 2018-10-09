@@ -86,10 +86,7 @@ class ActivityController: UITableViewController {
           let items = data["items"] as? [[String: Any]] else {
           return Observable.empty()
         }
-        let full_names = items.compactMap({ jsonData -> String? in
-          return jsonData["full_name"] as? String
-        })
-        return Observable.from(full_names)
+        return Observable.from(items.compactMap { $0["full_name"] as? String })
       }
       .map { urlString -> URL in
         return URL(string: "https://api.github.com/repos/\(urlString)/events?per_page=5")!
@@ -124,6 +121,9 @@ class ActivityController: UITableViewController {
       .map { objects -> [Event] in
         return objects
           .compactMap(Event.init)
+          .sorted {
+            return $0.createdDate.compare($1.createdDate) == ComparisonResult.orderedDescending
+          }
       }
       .subscribe(onNext: { [weak self] newEvents in
         self?.processEvents(newEvents)
@@ -156,6 +156,9 @@ class ActivityController: UITableViewController {
     var updatedEvents = newEvents + events.value
     if updatedEvents.count > 50 {
       updatedEvents = Array<Event>(updatedEvents.prefix(upTo: 50))
+    }
+    updatedEvents = updatedEvents.sorted {
+      return $0.createdDate.compare($1.createdDate) == ComparisonResult.orderedDescending
     }
     events.value = updatedEvents
   
