@@ -27,24 +27,42 @@ import RxCocoa
 class CategoriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
   @IBOutlet var tableView: UITableView!
+    
+  let categories = Variable<[EOCategory]>([])
+  let bag = DisposeBag()
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    categories
+      .asObservable()
+      .subscribe(onNext: { [weak self] newCategories in
+        DispatchQueue.main.async {
+          self?.tableView.reloadData()
+        }
+      })
+      .disposed(by: bag)
     startDownload()
   }
 
   func startDownload() {
-    
+    let eoCategogies = EONET.categories
+    eoCategogies
+      .bind(to: categories)
+      .disposed(by: bag)
   }
   
   // MARK: UITableViewDataSource
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 0
+    return categories.value.count;
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell")!
+    
+    let category = categories.value[indexPath.row];
+    cell.textLabel?.text = category.name;
+    cell.detailTextLabel?.text = category.description;
     return cell
   }
   

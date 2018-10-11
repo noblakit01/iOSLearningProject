@@ -36,6 +36,18 @@ class EONET {
     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
     return formatter
   }()
+  
+  static var categories: Observable<[EOCategory]> = {
+    return EONET.request(endPoint: categoriesEndpoint)
+      .map { data in
+        let categories = data["categories"] as? [[String: Any]] ?? []
+        return categories
+          .compactMap(EOCategory.init)
+          .sorted { $0.name < $1.name }
+      }
+      .catchErrorJustReturn([])
+      .share(replay: 1, scope: .forever)
+  }()
 
   static func filteredEvents(events: [EOEvent], forCategory category: EOCategory) -> [EOEvent] {
     return events.filter { event in
@@ -45,6 +57,35 @@ class EONET {
              }
     }
     .sorted(by: EOEvent.compareDates)
+  }
+  
+  static func request(endPoint: String, query: [String: Any] = [:]) -> Observable<[String: Any]> {
+    do {
+      guard let url = URL(string: API)?.appendingPathComponent(endPoint),
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+          throw EOError.invalidURL(endPoint)
+      }
+      components.queryItems = try query.compactMap { (key, value) in
+        guard let v = value as? CustomStringConvertible else {
+          throw EOError.invalidParameter(key, value)
+        }
+        return URLQueryItem(name: key, value: v.description)
+      }
+      guard let finalURL = components.url else {
+        throw EOError.invalidURL(endPoint)
+      }
+      let request = URLRequest(url: finalURL)
+      return URLSession.shared.rx.response(request: request)
+        .map { _, data -> [String: Any] in
+          guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
+            let result = jsonObject as? [String: Any] else {
+              throw EOError.invalidJSON(finalURL.absoluteString)
+          }
+          return result
+      }
+    } catch {
+      return Observable.empty()
+    }
   }
   
 }
