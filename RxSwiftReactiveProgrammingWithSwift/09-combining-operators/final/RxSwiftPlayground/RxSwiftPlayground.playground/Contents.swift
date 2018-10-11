@@ -236,9 +236,16 @@ example(of: "scan") {
   let source = Observable.of(1, 3, 5, 7, 9)
 
   let observable = source.scan(0, accumulator: +)
-  observable.subscribe(onNext: { value in
+    Observable.zip(source, observable).asObservable().subscribe(onNext: { value in
     print(value)
   })
+    print("=====")
+    let observable2 = source.scan((0, 0), accumulator: { sum, value -> (Int, Int) in
+        return (value, sum.1 + value)
+    })
+    observable2.subscribe(onNext: { value in
+        print(value)
+    })
 }
 
 /*:
