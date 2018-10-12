@@ -27,8 +27,8 @@ import RxCocoa
 class CategoriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
   @IBOutlet var tableView: UITableView!
-    
-  let categories = Variable<[EOCategory]>([])
+  
+  let categories = BehaviorRelay<[EOCategory]>(value: [])
   let bag = DisposeBag()
 
   override func viewDidLoad() {
@@ -47,7 +47,25 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
 
   func startDownload() {
     let eoCategogies = EONET.categories
+    let downloadedEvents = EONET.events(forLast: 360)
+    
     eoCategogies
+      .bind(to: categories)
+      .disposed(by: bag)
+    
+    let updatedCategories = Observable
+      .combineLatest(eoCategogies, downloadedEvents) { (categories, events) -> [EOCategory] in
+        return categories.map { category in
+          var cat = category
+          cat.events = events.filter {
+            $0.categories.contains(cat.id)
+          }
+          return cat
+        }
+      }
+    
+    eoCategogies
+      .concat(updatedCategories)
       .bind(to: categories)
       .disposed(by: bag)
   }
@@ -61,9 +79,22 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
     let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell")!
     
     let category = categories.value[indexPath.row];
-    cell.textLabel?.text = category.name;
-    cell.detailTextLabel?.text = category.description;
+    cell.textLabel?.text = "\(category.name) (\(category.events.count))";
+    cell.detailTextLabel?.text = "\(category.description)";
+    cell.accessoryType = (category.events.count > 0) ? .disclosureIndicator : .none
     return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let category = categories.value[indexPath.row]
+    if !category.events.isEmpty {
+      let eventsController = storyboard!.instantiateViewController(withIdentifier: "events") as! EventsViewController
+      eventsController.title = category.name
+      eventsController.events.value = category.events
+      
+      navigationController!.pushViewController(eventsController, animated: true)
+    }
+    tableView.deselectRow(at: indexPath, animated: true)
   }
   
 }

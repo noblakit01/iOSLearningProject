@@ -28,24 +28,57 @@ class EventsViewController : UIViewController, UITableViewDataSource {
   @IBOutlet var tableView: UITableView!
   @IBOutlet var slider: UISlider!
   @IBOutlet var daysLabel: UILabel!
+  
+  let events = Variable<[EOEvent]>([])
+  let bag = DisposeBag()
+  let filteredEvents = Variable<[EOEvent]>([])
+  let days = Variable<Int>(360)
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 60
+    
+    filteredEvents.asObservable()
+      .subscribe(onNext: { [weak self] _ in
+        self?.tableView.reloadData()
+      })
+      .disposed(by: bag)
+    
+    Observable
+      .combineLatest(days.asObservable(), events.asObservable()) { days, events -> [EOEvent] in
+        let maxIntervals = TimeInterval(days * 24 * 3600)
+        return events.filter { event -> Bool in
+          if let date = event.closeDate {
+            return abs(date.timeIntervalSinceNow) < maxIntervals
+          }
+          return true
+        }
+      }
+      .bind(to: filteredEvents)
+      .disposed(by: bag)
+    
+    days.asObservable()
+      .subscribe(onNext: { [weak self] days in
+        self?.daysLabel.text = "Last \(days) days"
+      })
+      .disposed(by: bag)
   }
 
   @IBAction func sliderAction(slider: UISlider) {
+    days.value = Int(slider.value)
   }
   
   // MARK: UITableViewDataSource
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 0
+    return filteredEvents.value.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell") as! EventCell
+    let event = filteredEvents.value[indexPath.row]
+    cell.configure(event: event)
     return cell
   }
   
