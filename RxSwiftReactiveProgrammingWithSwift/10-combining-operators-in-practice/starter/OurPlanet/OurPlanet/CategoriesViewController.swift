@@ -27,12 +27,17 @@ import RxCocoa
 class CategoriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
   @IBOutlet var tableView: UITableView!
+  let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
   
   let categories = BehaviorRelay<[EOCategory]>(value: [])
   let bag = DisposeBag()
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    activityView.hidesWhenStopped = true
+    activityView.startAnimating()
+    navigationItem.setRightBarButton(UIBarButtonItem(customView: activityView), animated: true)
 
     categories
       .asObservable()
@@ -75,6 +80,17 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
       .concat(updatedCategories)
       .bind(to: categories)
       .disposed(by: bag)
+    
+    updatedCategories.subscribe { [weak self] event in
+      switch event {
+      case .completed, .error:
+        DispatchQueue.main.async {
+          self?.activityView.stopAnimating()
+        }
+      default:
+        break
+      }
+    }.disposed(by: bag)
   }
   
   // MARK: UITableViewDataSource
