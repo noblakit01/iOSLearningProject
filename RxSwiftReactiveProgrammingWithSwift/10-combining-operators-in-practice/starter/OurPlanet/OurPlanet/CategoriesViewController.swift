@@ -31,13 +31,17 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   
   let categories = BehaviorRelay<[EOCategory]>(value: [])
   let bag = DisposeBag()
-
+  let download = DownloadView()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     activityView.hidesWhenStopped = true
     activityView.startAnimating()
     navigationItem.setRightBarButton(UIBarButtonItem(customView: activityView), animated: true)
+    
+    view.addSubview(download)
+    view.layoutIfNeeded()
 
     categories
       .asObservable()
@@ -51,6 +55,9 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   }
 
   func startDownload() {
+    download.progress.progress = 0.0
+    download.label.text = "Download: 0%"
+    
     let eoCategogies = EONET.categories
     let downloadedEvents = eoCategogies.flatMap { categories in
       return Observable.from(categories.map { category in
@@ -74,23 +81,34 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
           return category
         }
       }
-    }
+      }
+      .do(onCompleted: { [weak self] in
+        DispatchQueue.main.async {
+          self?.activityView.stopAnimating()
+          self?.download.isHidden = true
+        }
+      })
+    
+    eoCategogies.flatMap { categories in
+      return updatedCategories.scan(0) { count, _ in
+        return count + 1
+        }
+        .startWith(0)
+        .map{ ($0, categories.count) }
+      }.subscribe(onNext: { tuple in
+        DispatchQueue.main.async { [weak self] in
+          let progress = Float(tuple.0) / Float(tuple.1)
+          self?.download.progress.progress = progress
+          let percent = Int(progress * 100.0)
+          self?.download.label.text = "Download: \(percent)%"
+        }
+      })
+      .disposed(by: bag)
     
     eoCategogies
       .concat(updatedCategories)
       .bind(to: categories)
       .disposed(by: bag)
-    
-    updatedCategories.subscribe { [weak self] event in
-      switch event {
-      case .completed, .error:
-        DispatchQueue.main.async {
-          self?.activityView.stopAnimating()
-        }
-      default:
-        break
-      }
-    }.disposed(by: bag)
   }
   
   // MARK: UITableViewDataSource
