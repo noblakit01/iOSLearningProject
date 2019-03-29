@@ -71,8 +71,21 @@ extension SearchResultsViewController: UICollectionViewDataSource {
           if cell.flickrPhoto == flickrPhoto {
             if flickrPhoto.isFavourite {
               cell.imageView.image = image
-            } else if let filteredImage = image.applyTonalFilter() {
-              cell.imageView.image = filteredImage
+            } else {
+                if let cachedImage = ImageCache.shared.image(forKey: "\(flickrPhoto.id)-filtered") {
+                    cell.imageView.image = cachedImage
+                }
+                else {
+                    DispatchQueue.global().async {
+                        if let filteredImage = image.applyTonalFilter() {
+                            ImageCache.shared.set(filteredImage, forKey: "\(flickrPhoto.id)-filtered")
+                            
+                            DispatchQueue.main.async {
+                                cell.imageView.image = filteredImage
+                            }
+                        }
+                    }
+                }
             }
           }
           
