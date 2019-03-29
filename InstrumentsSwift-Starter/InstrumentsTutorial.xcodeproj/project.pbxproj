@@ -206,6 +206,7 @@
 				TargetAttributes = {
 					17D45BF61A9F52D400DC4881 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = TMH6L6FX6W;
 						LastSwiftMigration = 0900;
 					};
 					17D45C0B1A9F52D400DC4881 = {
@@ -220,6 +221,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -412,10 +414,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TMH6L6FX6W;
 				INFOPLIST_FILE = InstrumentsTutorial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.InstrumentsTutorial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.luantran.InstrumentsTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
@@ -426,10 +428,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = TMH6L6FX6W;
 				INFOPLIST_FILE = InstrumentsTutorial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.InstrumentsTutorial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.luantran.InstrumentsTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
