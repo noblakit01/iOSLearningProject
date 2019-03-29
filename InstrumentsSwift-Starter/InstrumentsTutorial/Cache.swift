@@ -35,6 +35,16 @@ class ImageCache {
   private static let _shared = ImageCache()
   
   var images = [String:UIImage]()
+    
+    init() {
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidReceiveMemoryWarning, object: nil, queue: .main) { [weak self] notification in
+            self?.images.removeAll(keepingCapacity: false)
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
   
   static var shared: ImageCache {
     return _shared

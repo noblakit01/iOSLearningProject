@@ -58,7 +58,7 @@ extension SearchResultsViewController: UICollectionViewDataSource {
     if let flickrPhoto = searchResults?.searchResults[indexPath.item] {
       cell.flickrPhoto = flickrPhoto
       
-      cell.heartToggleHandler = { isStarred in
+      cell.heartToggleHandler = { [unowned self] isStarred in
         self.collectionView.reloadItems(at: [ indexPath ])
       }
       
