@@ -113,13 +113,13 @@ extension PancakeHouse {
     self.details = details
     self.rating = rating
     
-    if let imageName = dict["imageName"] as? String where !imageName.isEmpty {
+    if let imageName = dict["imageName"] as? String, !imageName.isEmpty {
       photo = UIImage(named: imageName)
     } else {
       photo = nil
     }
     
-    if let thumbnailName = dict["thumbnailName"] as? String where !thumbnailName.isEmpty {
+    if let thumbnailName = dict["thumbnailName"] as? String, !thumbnailName.isEmpty {
       thumbnail = UIImage(named: thumbnailName)
     } else {
       thumbnail = nil
@@ -136,11 +136,11 @@ extension PancakeHouse {
 
 extension PancakeHouse {
   static func loadDefaultPancakeHouses() -> [PancakeHouse]? {
-    return self.loadPancakeHousesFromPlistNamed("pancake_houses")
+    return self.loadPancakeHousesFromPlistNamed(plistName: "pancake_houses")
   }
   
   static func loadPancakeHousesFromPlistNamed(plistName: String) -> [PancakeHouse]? {
-    guard let path = NSBundle.mainBundle().pathForResource(plistName, ofType: "plist"),
+    guard let path = Bundle.main.path(forResource: plistName, ofType: "plist"),
       let array = NSArray(contentsOfFile: path) as? [[String : AnyObject]] else {
         return nil
     }

@@ -50,7 +50,7 @@ class PancakeHouseViewController : UIViewController {
           detailsLabel?.text = pancakeHouse.details
           priceGuideLabel?.text = "\(pancakeHouse.priceGuide)"
           ratingImage?.image = pancakeHouse.rating.ratingImage
-          centreMap(mapView, atPosition: pancakeHouse.location)
+        centreMap(map: mapView, atPosition: pancakeHouse.location)
       }
   }
   
@@ -58,31 +58,31 @@ class PancakeHouseViewController : UIViewController {
       super.viewDidLoad()
       self.configureView()
   }
-  
-  @IBAction func handleShowDetailsButtonPressed(sender: UIButton) {
-    if detailsLabel.hidden {
-      animateView(detailsLabel, toHidden: false)
-      showDetailsButton.setTitle("Hide Details", forState: .Normal)
-    } else {
-      animateView(detailsLabel, toHidden: true)
-      showDetailsButton.setTitle("Show Details", forState: .Normal)
-    }
+    
+    @IBAction func handleShowDetailsButtonPressed(sender: UIButton) {
+        if detailsLabel.isHidden {
+            animateView(view: detailsLabel, toHidden: false)
+            showDetailsButton.setTitle("Hide Details", for: .normal)
+        } else {
+            animateView(view: detailsLabel, toHidden: true)
+            showDetailsButton.setTitle("Show Details", for: .normal)
+        }
   }
     
   @IBAction func handleShowMapButtonPressed(sender: UIButton) {
-    if mapView.hidden {
-      animateView(mapView, toHidden: false, withConstaint: sameHeightMapImageConstraint)
-      showMapButton.setTitle("Hide Map", forState: .Normal)
+    if mapView.isHidden {
+        animateView(view: mapView, toHidden: false, withConstaint: sameHeightMapImageConstraint)
+        showMapButton.setTitle("Hide Map", for: .normal)
     } else {
-      animateView(mapView, toHidden: true, withConstaint: sameHeightMapImageConstraint)
-      showMapButton.setTitle("Show Map", forState: .Normal)
+        animateView(view: mapView, toHidden: true, withConstaint: sameHeightMapImageConstraint)
+        showMapButton.setTitle("Show Map", for: .normal)
     }
   }
   
   private func animateView(view: UIView, toHidden hide: Bool, withConstaint constaint: NSLayoutConstraint? = nil) {
-    UIView.animateWithDuration(0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10.0, options: UIViewAnimationOptions(), animations: {
-      view.hidden = hide
-      constaint?.active = !hide
+    UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10.0, options: UIView.AnimationOptions(), animations: {
+        view.isHidden = hide
+        constaint?.isActive = !hide
       }, completion: nil)
   }
   
@@ -91,13 +91,13 @@ class PancakeHouseViewController : UIViewController {
           let position = position else {
               return
       }
-      map.zoomEnabled = false
-      map.scrollEnabled = false
-      map.pitchEnabled = false
-      map.rotateEnabled = false
-      map.setCenterCoordinate(position, animated: true)
+    map.isZoomEnabled = false
+    map.isScrollEnabled = false
+    map.isPitchEnabled = false
+    map.isRotateEnabled = false
+    map.setCenter(position, animated: true)
     
-      let zoomRegion = MKCoordinateRegionMakeWithDistance(position, 10000, 10000)
+    let zoomRegion = MKCoordinateRegion(center: position, latitudinalMeters: 10000, longitudinalMeters: 10000)
       map.setRegion(zoomRegion, animated: true)
     
       let annotation = MKPointAnnotation()

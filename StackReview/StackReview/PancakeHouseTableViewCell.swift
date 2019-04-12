@@ -33,7 +33,7 @@ class PancakeHouseTableViewCell: UITableViewCell {
   
   var showExtraDetails: Bool = false {
     didSet {
-      extraDetailsStackView.hidden = !showExtraDetails
+        extraDetailsStackView.isHidden = !showExtraDetails
     }
   }
   
@@ -54,7 +54,7 @@ class PancakeHouseTableViewCell: UITableViewCell {
   }
   
   func animateShowExtraDetails(show: Bool) {
-    UIView.animateWithDuration(1.0) {
+    UIView.animate(withDuration: 1.0) {
       self.showExtraDetails = show
     }
   }
