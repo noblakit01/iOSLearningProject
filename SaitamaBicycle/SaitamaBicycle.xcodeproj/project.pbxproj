@@ -1,0 +1,717 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0F25EF121D3B350A00BA3E14 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25EF111D3B350A00BA3E14 /* KeychainWrapper.swift */; };
+		0F8534D61D3B547E000D2B39 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8534D51D3B547E000D2B39 /* MapController.swift */; };
+		0F8534D91D3B6471000D2B39 /* BicyclePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8534D81D3B6471000D2B39 /* BicyclePlace.swift */; };
+		0FA3C6A51D3B08CA00C0318D /* ServerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3C6A41D3B08CA00C0318D /* ServerHelper.swift */; };
+		0FC06C911D3A6BC900B60522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC06C901D3A6BC900B60522 /* AppDelegate.swift */; };
+		0FC06C961D3A6BC900B60522 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC06C941D3A6BC900B60522 /* Main.storyboard */; };
+		0FC06C981D3A6BC900B60522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FC06C971D3A6BC900B60522 /* Assets.xcassets */; };
+		0FC06C9B1D3A6BC900B60522 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC06C991D3A6BC900B60522 /* LaunchScreen.storyboard */; };
+		0FC06CA61D3A6BC900B60522 /* SaitamaBicycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC06CA51D3A6BC900B60522 /* SaitamaBicycleTests.swift */; };
+		0FC06CB11D3A6BC900B60522 /* SaitamaBicycleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC06CB01D3A6BC900B60522 /* SaitamaBicycleUITests.swift */; };
+		0FC06CC01D3A733700B60522 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC06CBF1D3A733700B60522 /* LoginController.swift */; };
+		4CF88A7E2650E15CBBF0EA1C /* Pods_SaitamaBicycleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8C22130711035E20E9EBDAC /* Pods_SaitamaBicycleUITests.framework */; };
+		73406077EC378C791D4B3EB1 /* Pods_SaitamaBicycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372A2B4328F708D95B3050BD /* Pods_SaitamaBicycle.framework */; };
+		9D72124250DADAFA6FFD233B /* Pods_SaitamaBicycleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA91B3903766AA9AF09A457 /* Pods_SaitamaBicycleTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0FC06CA21D3A6BC900B60522 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0FC06C851D3A6BC900B60522 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FC06C8C1D3A6BC900B60522;
+			remoteInfo = SaitamaBicycle;
+		};
+		0FC06CAD1D3A6BC900B60522 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0FC06C851D3A6BC900B60522 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FC06C8C1D3A6BC900B60522;
+			remoteInfo = SaitamaBicycle;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0F25EF111D3B350A00BA3E14 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		0F8534D51D3B547E000D2B39 /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		0F8534D81D3B6471000D2B39 /* BicyclePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BicyclePlace.swift; sourceTree = "<group>"; };
+		0FA3C6A41D3B08CA00C0318D /* ServerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerHelper.swift; sourceTree = "<group>"; };
+		0FC06C8D1D3A6BC900B60522 /* SaitamaBicycle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaitamaBicycle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FC06C901D3A6BC900B60522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0FC06C951D3A6BC900B60522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0FC06C971D3A6BC900B60522 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0FC06C9A1D3A6BC900B60522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0FC06C9C1D3A6BC900B60522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FC06CA11D3A6BC900B60522 /* SaitamaBicycleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaitamaBicycleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FC06CA51D3A6BC900B60522 /* SaitamaBicycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaitamaBicycleTests.swift; sourceTree = "<group>"; };
+		0FC06CA71D3A6BC900B60522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FC06CAC1D3A6BC900B60522 /* SaitamaBicycleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaitamaBicycleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FC06CB01D3A6BC900B60522 /* SaitamaBicycleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaitamaBicycleUITests.swift; sourceTree = "<group>"; };
+		0FC06CB21D3A6BC900B60522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FC06CBF1D3A733700B60522 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		13066869E7334C0865519B98 /* Pods-SaitamaBicycle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaitamaBicycle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SaitamaBicycle/Pods-SaitamaBicycle.debug.xcconfig"; sourceTree = "<group>"; };
+		22290724B6A2CB0A15883F4B /* Pods-SaitamaBicycleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaitamaBicycleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SaitamaBicycleUITests/Pods-SaitamaBicycleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		372A2B4328F708D95B3050BD /* Pods_SaitamaBicycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaitamaBicycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43A65115A8375CB7B7CEBF2A /* Pods-SaitamaBicycleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaitamaBicycleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SaitamaBicycleTests/Pods-SaitamaBicycleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5EA91B3903766AA9AF09A457 /* Pods_SaitamaBicycleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaitamaBicycleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		818D68EA6AD727123B2DB9DD /* Pods-SaitamaBicycleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaitamaBicycleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SaitamaBicycleUITests/Pods-SaitamaBicycleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C485F0AF7F0A293D8D26C011 /* Pods-SaitamaBicycle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaitamaBicycle.release.xcconfig"; path = "Pods/Target Support Files/Pods-SaitamaBicycle/Pods-SaitamaBicycle.release.xcconfig"; sourceTree = "<group>"; };
+		D2E5A5E8E95825AC98EF8256 /* Pods-SaitamaBicycleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaitamaBicycleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SaitamaBicycleTests/Pods-SaitamaBicycleTests.release.xcconfig"; sourceTree = "<group>"; };
+		F8C22130711035E20E9EBDAC /* Pods_SaitamaBicycleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaitamaBicycleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0FC06C8A1D3A6BC900B60522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73406077EC378C791D4B3EB1 /* Pods_SaitamaBicycle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FC06C9E1D3A6BC900B60522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D72124250DADAFA6FFD233B /* Pods_SaitamaBicycleTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FC06CA91D3A6BC900B60522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CF88A7E2650E15CBBF0EA1C /* Pods_SaitamaBicycleUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F8534D71D3B5674000D2B39 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F8534D81D3B6471000D2B39 /* BicyclePlace.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0FC06C841D3A6BC900B60522 = {
+			isa = PBXGroup;
+			children = (
+				0FC06C8F1D3A6BC900B60522 /* SaitamaBicycle */,
+				0FC06CA41D3A6BC900B60522 /* SaitamaBicycleTests */,
+				0FC06CAF1D3A6BC900B60522 /* SaitamaBicycleUITests */,
+				0FC06C8E1D3A6BC900B60522 /* Products */,
+				6BE15051DC8229013A21D727 /* Pods */,
+				D0CF9E22976AD560611338F8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0FC06C8E1D3A6BC900B60522 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0FC06C8D1D3A6BC900B60522 /* SaitamaBicycle.app */,
+				0FC06CA11D3A6BC900B60522 /* SaitamaBicycleTests.xctest */,
+				0FC06CAC1D3A6BC900B60522 /* SaitamaBicycleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0FC06C8F1D3A6BC900B60522 /* SaitamaBicycle */ = {
+			isa = PBXGroup;
+			children = (
+				0F8534D71D3B5674000D2B39 /* Model */,
+				0FC06CBE1D3A731300B60522 /* Controller */,
+				0FC06C901D3A6BC900B60522 /* AppDelegate.swift */,
+				0FC06C941D3A6BC900B60522 /* Main.storyboard */,
+				0FC06C971D3A6BC900B60522 /* Assets.xcassets */,
+				0FC06C991D3A6BC900B60522 /* LaunchScreen.storyboard */,
+				0FC06C9C1D3A6BC900B60522 /* Info.plist */,
+				0FA3C6A41D3B08CA00C0318D /* ServerHelper.swift */,
+				0F25EF111D3B350A00BA3E14 /* KeychainWrapper.swift */,
+			);
+			path = SaitamaBicycle;
+			sourceTree = "<group>";
+		};
+		0FC06CA41D3A6BC900B60522 /* SaitamaBicycleTests */ = {
+			isa = PBXGroup;
+			children = (
+				0FC06CA51D3A6BC900B60522 /* SaitamaBicycleTests.swift */,
+				0FC06CA71D3A6BC900B60522 /* Info.plist */,
+			);
+			path = SaitamaBicycleTests;
+			sourceTree = "<group>";
+		};
+		0FC06CAF1D3A6BC900B60522 /* SaitamaBicycleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0FC06CB01D3A6BC900B60522 /* SaitamaBicycleUITests.swift */,
+				0FC06CB21D3A6BC900B60522 /* Info.plist */,
+			);
+			path = SaitamaBicycleUITests;
+			sourceTree = "<group>";
+		};
+		0FC06CBE1D3A731300B60522 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0FC06CBF1D3A733700B60522 /* LoginController.swift */,
+				0F8534D51D3B547E000D2B39 /* MapController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		6BE15051DC8229013A21D727 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				13066869E7334C0865519B98 /* Pods-SaitamaBicycle.debug.xcconfig */,
+				C485F0AF7F0A293D8D26C011 /* Pods-SaitamaBicycle.release.xcconfig */,
+				43A65115A8375CB7B7CEBF2A /* Pods-SaitamaBicycleTests.debug.xcconfig */,
+				D2E5A5E8E95825AC98EF8256 /* Pods-SaitamaBicycleTests.release.xcconfig */,
+				818D68EA6AD727123B2DB9DD /* Pods-SaitamaBicycleUITests.debug.xcconfig */,
+				22290724B6A2CB0A15883F4B /* Pods-SaitamaBicycleUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D0CF9E22976AD560611338F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				372A2B4328F708D95B3050BD /* Pods_SaitamaBicycle.framework */,
+				5EA91B3903766AA9AF09A457 /* Pods_SaitamaBicycleTests.framework */,
+				F8C22130711035E20E9EBDAC /* Pods_SaitamaBicycleUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0FC06C8C1D3A6BC900B60522 /* SaitamaBicycle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FC06CB51D3A6BC900B60522 /* Build configuration list for PBXNativeTarget "SaitamaBicycle" */;
+			buildPhases = (
+				01A21D77B183FD0A8EF26E47 /* [CP] Check Pods Manifest.lock */,
+				0FC06C891D3A6BC900B60522 /* Sources */,
+				0FC06C8A1D3A6BC900B60522 /* Frameworks */,
+				0FC06C8B1D3A6BC900B60522 /* Resources */,
+				99E848E97E3BEEB577A1DBDE /* [CP] Embed Pods Frameworks */,
+				4007E327C9DACCBCDB17EDBC /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SaitamaBicycle;
+			productName = SaitamaBicycle;
+			productReference = 0FC06C8D1D3A6BC900B60522 /* SaitamaBicycle.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0FC06CA01D3A6BC900B60522 /* SaitamaBicycleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FC06CB81D3A6BC900B60522 /* Build configuration list for PBXNativeTarget "SaitamaBicycleTests" */;
+			buildPhases = (
+				8CBC63B44FC69B97EAFF8497 /* [CP] Check Pods Manifest.lock */,
+				0FC06C9D1D3A6BC900B60522 /* Sources */,
+				0FC06C9E1D3A6BC900B60522 /* Frameworks */,
+				0FC06C9F1D3A6BC900B60522 /* Resources */,
+				0B4DA779BC7AADB470DE92DB /* [CP] Embed Pods Frameworks */,
+				440375039DE8A23BEBF6C9FD /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0FC06CA31D3A6BC900B60522 /* PBXTargetDependency */,
+			);
+			name = SaitamaBicycleTests;
+			productName = SaitamaBicycleTests;
+			productReference = 0FC06CA11D3A6BC900B60522 /* SaitamaBicycleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0FC06CAB1D3A6BC900B60522 /* SaitamaBicycleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FC06CBB1D3A6BC900B60522 /* Build configuration list for PBXNativeTarget "SaitamaBicycleUITests" */;
+			buildPhases = (
+				3E6B97FABF9080620B60035E /* [CP] Check Pods Manifest.lock */,
+				0FC06CA81D3A6BC900B60522 /* Sources */,
+				0FC06CA91D3A6BC900B60522 /* Frameworks */,
+				0FC06CAA1D3A6BC900B60522 /* Resources */,
+				1A5FE2974F0852E71A958135 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0FC06CAE1D3A6BC900B60522 /* PBXTargetDependency */,
+			);
+			name = SaitamaBicycleUITests;
+			productName = SaitamaBicycleUITests;
+			productReference = 0FC06CAC1D3A6BC900B60522 /* SaitamaBicycleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0FC06C851D3A6BC900B60522 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = luantran;
+				TargetAttributes = {
+					0FC06C8C1D3A6BC900B60522 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					0FC06CA01D3A6BC900B60522 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 0FC06C8C1D3A6BC900B60522;
+					};
+					0FC06CAB1D3A6BC900B60522 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 0FC06C8C1D3A6BC900B60522;
+					};
+				};
+			};
+			buildConfigurationList = 0FC06C881D3A6BC900B60522 /* Build configuration list for PBXProject "SaitamaBicycle" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0FC06C841D3A6BC900B60522;
+			productRefGroup = 0FC06C8E1D3A6BC900B60522 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0FC06C8C1D3A6BC900B60522 /* SaitamaBicycle */,
+				0FC06CA01D3A6BC900B60522 /* SaitamaBicycleTests */,
+				0FC06CAB1D3A6BC900B60522 /* SaitamaBicycleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0FC06C8B1D3A6BC900B60522 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FC06C9B1D3A6BC900B60522 /* LaunchScreen.storyboard in Resources */,
+				0FC06C981D3A6BC900B60522 /* Assets.xcassets in Resources */,
+				0FC06C961D3A6BC900B60522 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FC06C9F1D3A6BC900B60522 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FC06CAA1D3A6BC900B60522 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01A21D77B183FD0A8EF26E47 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0B4DA779BC7AADB470DE92DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaitamaBicycleTests/Pods-SaitamaBicycleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1A5FE2974F0852E71A958135 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaitamaBicycleUITests/Pods-SaitamaBicycleUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E6B97FABF9080620B60035E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4007E327C9DACCBCDB17EDBC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaitamaBicycle/Pods-SaitamaBicycle-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		440375039DE8A23BEBF6C9FD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaitamaBicycleTests/Pods-SaitamaBicycleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CBC63B44FC69B97EAFF8497 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		99E848E97E3BEEB577A1DBDE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaitamaBicycle/Pods-SaitamaBicycle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0FC06C891D3A6BC900B60522 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FC06CC01D3A733700B60522 /* LoginController.swift in Sources */,
+				0F25EF121D3B350A00BA3E14 /* KeychainWrapper.swift in Sources */,
+				0FC06C911D3A6BC900B60522 /* AppDelegate.swift in Sources */,
+				0F8534D91D3B6471000D2B39 /* BicyclePlace.swift in Sources */,
+				0F8534D61D3B547E000D2B39 /* MapController.swift in Sources */,
+				0FA3C6A51D3B08CA00C0318D /* ServerHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FC06C9D1D3A6BC900B60522 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FC06CA61D3A6BC900B60522 /* SaitamaBicycleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0FC06CA81D3A6BC900B60522 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FC06CB11D3A6BC900B60522 /* SaitamaBicycleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0FC06CA31D3A6BC900B60522 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FC06C8C1D3A6BC900B60522 /* SaitamaBicycle */;
+			targetProxy = 0FC06CA21D3A6BC900B60522 /* PBXContainerItemProxy */;
+		};
+		0FC06CAE1D3A6BC900B60522 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0FC06C8C1D3A6BC900B60522 /* SaitamaBicycle */;
+			targetProxy = 0FC06CAD1D3A6BC900B60522 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0FC06C941D3A6BC900B60522 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0FC06C951D3A6BC900B60522 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0FC06C991D3A6BC900B60522 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0FC06C9A1D3A6BC900B60522 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0FC06CB31D3A6BC900B60522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0FC06CB41D3A6BC900B60522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0FC06CB61D3A6BC900B60522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13066869E7334C0865519B98 /* Pods-SaitamaBicycle.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SaitamaBicycle/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luantran.SaitamaBicycle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0FC06CB71D3A6BC900B60522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C485F0AF7F0A293D8D26C011 /* Pods-SaitamaBicycle.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SaitamaBicycle/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luantran.SaitamaBicycle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0FC06CB91D3A6BC900B60522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43A65115A8375CB7B7CEBF2A /* Pods-SaitamaBicycleTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SaitamaBicycleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luantran.SaitamaBicycleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaitamaBicycle.app/SaitamaBicycle";
+			};
+			name = Debug;
+		};
+		0FC06CBA1D3A6BC900B60522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2E5A5E8E95825AC98EF8256 /* Pods-SaitamaBicycleTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SaitamaBicycleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luantran.SaitamaBicycleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaitamaBicycle.app/SaitamaBicycle";
+			};
+			name = Release;
+		};
+		0FC06CBC1D3A6BC900B60522 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 818D68EA6AD727123B2DB9DD /* Pods-SaitamaBicycleUITests.debug.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = SaitamaBicycleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luantran.SaitamaBicycleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SaitamaBicycle;
+			};
+			name = Debug;
+		};
+		0FC06CBD1D3A6BC900B60522 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22290724B6A2CB0A15883F4B /* Pods-SaitamaBicycleUITests.release.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = SaitamaBicycleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.luantran.SaitamaBicycleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SaitamaBicycle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0FC06C881D3A6BC900B60522 /* Build configuration list for PBXProject "SaitamaBicycle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FC06CB31D3A6BC900B60522 /* Debug */,
+				0FC06CB41D3A6BC900B60522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FC06CB51D3A6BC900B60522 /* Build configuration list for PBXNativeTarget "SaitamaBicycle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FC06CB61D3A6BC900B60522 /* Debug */,
+				0FC06CB71D3A6BC900B60522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FC06CB81D3A6BC900B60522 /* Build configuration list for PBXNativeTarget "SaitamaBicycleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FC06CB91D3A6BC900B60522 /* Debug */,
+				0FC06CBA1D3A6BC900B60522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FC06CBB1D3A6BC900B60522 /* Build configuration list for PBXNativeTarget "SaitamaBicycleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FC06CBC1D3A6BC900B60522 /* Debug */,
+				0FC06CBD1D3A6BC900B60522 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0FC06C851D3A6BC900B60522 /* Project object */;
+}
